@@ -15,6 +15,11 @@ display(dbutils.fs.ls(path))
 
 # COMMAND ----------
 
+# MAGIC %md 
+# MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Data Manipulation
+
+# COMMAND ----------
+
 raw_stocks = spark.read.csv(path+"/DJIA_table.csv", header=True)
 raw_stocks.printSchema()
 
@@ -78,6 +83,11 @@ data.write.mode("overwrite").saveAsTable("news_djia")
 
 # COMMAND ----------
 
+# MAGIC %md 
+# MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Data Exploration
+
+# COMMAND ----------
+
 # MAGIC %sql 
 # MAGIC DESC news_djia
 
@@ -85,6 +95,11 @@ data.write.mode("overwrite").saveAsTable("news_djia")
 
 # MAGIC %sql 
 # MAGIC SELECT min(Date), max(Date) FROM news_djia
+
+# COMMAND ----------
+
+# MAGIC %sql 
+# MAGIC SELECT count(1) from news_djia
 
 # COMMAND ----------
 
