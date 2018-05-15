@@ -36,6 +36,3 @@ display(
 
 # MAGIC %md 
 # MAGIC #<div style="float:right"><a href="$./Explore">Explore</a> <b style="font-size: 160%; color: #1CA0C2;">&#8680;</b></div></div>
-
-# COMMAND ----------
-
