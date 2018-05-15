@@ -25,7 +25,7 @@ test = splits[1].cache()
 from pyspark.ml.feature import RegexTokenizer, StopWordsRemover, CountVectorizer
 
 tokenizer = RegexTokenizer()    \
-  .setInputCol("News")        \
+  .setInputCol("News")          \
   .setOutputCol("tokens")       \
   .setPattern("\\W+")
 
@@ -90,6 +90,3 @@ display(dbutils.fs.ls(model_path+"/stages"))
 
 # MAGIC %md 
 # MAGIC #<div style="float:right"><a href="$./Inference">Inference</a> <b style="font-size: 160%; color: #1CA0C2;">&#8680;</b></div></div>
-
-# COMMAND ----------
-
