@@ -1,4 +1,9 @@
 # Databricks notebook source
+# MAGIC %md
+# MAGIC ![](/files/mjohns/housing-prices/2_data_science.png)
+
+# COMMAND ----------
+
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 from pyspark.sql.window import Window
@@ -39,20 +44,29 @@ display(stocks_w_label)
 
 # COMMAND ----------
 
-news = spark.read.csv(path+"/RedditNews.csv", header=True)
-news.printSchema()
+raw_news = spark.read.csv(path+"/RedditNews.csv", header=True)
+raw_news.printSchema()
 
 # COMMAND ----------
 
-news.withColumn("Date", to_date('Date', 'yyyy-MM-dd'))
+news = raw_news.\
+  withColumn("Date", to_date(col("Date"))).\
+  withColumn("News", regexp_replace("News", "b'", "")).\
+  withColumn("News", regexp_replace("News", "[^\w\s]", "")).\
+  withColumn("News", lower(col("News"))).\
+  groupBy(col("Date")).\
+  agg(concat_ws(" ", collect_list(col("News"))).alias("News"))
+  
 display(news)
+
+# COMMAND ----------
+
+news.printSchema()
 
 # COMMAND ----------
 
 data = stocks_w_label.\
   join(news, "Date").\
-  withColumn("News", regexp_replace("News", "b'", "")).\
-  withColumn("News", regexp_replace("News", "[^\w\s]", "")).\
   select("Date", "label", lower(col("News")).alias("News")).\
   orderBy(asc("Date"))
   
@@ -60,7 +74,7 @@ display(data)
 
 # COMMAND ----------
 
-data.createOrReplaceTempView("news_djia")
+data.write.mode("overwrite").saveAsTable("news_djia")
 
 # COMMAND ----------
 
@@ -85,9 +99,17 @@ data.createOrReplaceTempView("news_djia")
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%brexit%' GROUP BY label
+# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%pirate%' GROUP BY label
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%gdp%' GROUP BY label
+# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%president%' GROUP BY label
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC #<div style="float:right"><a href="$./Model">Model</a> <b style="font-size: 160%; color: #1CA0C2;">&#8680;</b></div></div>
+
+# COMMAND ----------
+
