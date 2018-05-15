@@ -8,11 +8,15 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # Agenda:
-# MAGIC * Data Engineering tasks e.g. Data Ingestion
-# MAGIC * Time Series manipulation and Data Exploration
-# MAGIC * NLP based ML Model Training, Validation and Tuning
-# MAGIC * Inference on Streaming Data using Deployed Model
+# MAGIC # Highlights:
+# MAGIC 
+# MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Data Engineering tasks e.g. Data Ingestion
+# MAGIC 
+# MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Time Series manipulation and Data Exploration
+# MAGIC 
+# MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) NLP pipeline and ML Model Training, Validation and Tuning
+# MAGIC 
+# MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Inference on Streaming Data using Deployed Model
 
 # COMMAND ----------
 
