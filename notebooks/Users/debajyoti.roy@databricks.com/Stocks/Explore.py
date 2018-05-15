@@ -110,6 +110,3 @@ data.write.mode("overwrite").saveAsTable("news_djia")
 
 # MAGIC %md 
 # MAGIC #<div style="float:right"><a href="$./Model">Model</a> <b style="font-size: 160%; color: #1CA0C2;">&#8680;</b></div></div>
-
-# COMMAND ----------
-
