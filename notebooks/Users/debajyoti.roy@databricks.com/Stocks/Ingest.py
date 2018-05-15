@@ -14,10 +14,6 @@
 
 # COMMAND ----------
 
-# MAGIC %sh ls -lh .
-
-# COMMAND ----------
-
 dbutils.fs.rm("dbfs:/mnt/roy/kaggle/stocknews",True)
 dbutils.fs.mkdirs("dbfs:/mnt/roy/kaggle/stocknews")
 
