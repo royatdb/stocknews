@@ -20,6 +20,11 @@ display(tree)
 
 // COMMAND ----------
 
+// MAGIC %md 
+// MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Inference on Stream of News
+
+// COMMAND ----------
+
 val newsDF = spark.read.
   option("header", "true").
   option("inferSchema", "true").
@@ -38,9 +43,9 @@ dbutils.fs.rm(newsJsonPath, true)
 
 newsDF.coalesce(64).write.json(newsJsonPath)
 
-// COMMAND ----------
-
 val newsStream = spark.readStream.option("maxFilesPerTrigger",1).schema(newsSchema).json(newsJsonPath)
+
+// COMMAND ----------
 
 display(newsStream)
 
@@ -58,5 +63,9 @@ display(
 
 // COMMAND ----------
 
-// MAGIC %md #TL;DR 
+// MAGIC %md 
+// MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) TL;DR 
 // MAGIC ![ml](https://s3.us-east-2.amazonaws.com/databricks-roy/MLDB.jpeg)
+
+// COMMAND ----------
+
