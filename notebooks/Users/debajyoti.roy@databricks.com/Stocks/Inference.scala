@@ -52,6 +52,3 @@ display(predictedStream.groupBy("prediction").count())
 
 // MAGIC %md #TL;DR 
 // MAGIC ![ml](https://s3.us-east-2.amazonaws.com/databricks-roy/MLDB.jpeg)
-
-// COMMAND ----------
-
