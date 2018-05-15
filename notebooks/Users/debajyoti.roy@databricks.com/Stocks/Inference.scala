@@ -31,22 +31,36 @@ val newsDF = spark.read.
   groupBy($"Date").
   agg(concat_ws(" ", collect_list($"News")).alias("News"))
 
-val newsDeltaPath = "/mnt/roy/redditnews"
-dbutils.fs.rm(newsDeltaPath, true)
+val newsSchema = newsDF.schema
 
-newsDF.write.format("delta").save(newsDeltaPath)
+val newsJsonPath = "/mnt/roy/redditnews"
+dbutils.fs.rm(newsJsonPath, true)
 
-val newsStream = spark.readStream.option("maxFilesPerTrigger",1).format("delta").load(newsDeltaPath)
+newsDF.coalesce(48).write.json(newsJsonPath)
 
 // COMMAND ----------
 
-val predictedStream = model.transform(newsStream)
+val newsStream = spark.readStream.option("maxFilesPerTrigger",1).schema(newsSchema).json(newsJsonPath)
+
+newsStream.writeStream
+  .format("memory")
+  .queryName("news_stream")
+  .start()
+
+// COMMAND ----------
+
+// MAGIC %sql SELECT * from news_stream
+
+// COMMAND ----------
+
+val predictedStream = model.transform(spark.read.table("news_stream"))
 display(predictedStream)
 
 // COMMAND ----------
 
-val predictedStream = model.transform(newsStream)
-display(predictedStream.groupBy("prediction").count())
+display(
+  predictedStream.groupBy("prediction").count()
+)
 
 // COMMAND ----------
 
