@@ -1,4 +1,9 @@
 # Databricks notebook source
+# MAGIC %md
+# MAGIC ![](/files/mjohns/housing-prices/1_data_engineering.png)
+
+# COMMAND ----------
+
 # MAGIC %sh
 # MAGIC wget https://raw.githubusercontent.com/royatdb/stocknews/master/DJIA_table.csv
 
@@ -26,3 +31,11 @@ dbutils.fs.mkdirs("dbfs:/mnt/roy/kaggle/stocknews")
 display(
   dbutils.fs.ls("/mnt/roy/kaggle/stocknews")
 )
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC #<div style="float:right"><a href="$./Explore">Explore</a> <b style="font-size: 160%; color: #1CA0C2;">&#8680;</b></div></div>
+
+# COMMAND ----------
+
