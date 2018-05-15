@@ -73,7 +73,8 @@ display(result)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # [Kaggle](https://www.kaggle.com/aaron7sun/stocknews/kernels) submissions have `AUC` = 0.5 - 0.55
+# MAGIC # Most [Kaggle](https://www.kaggle.com/aaron7sun/stocknews/kernels) submissions have 
+# MAGIC $$AUC \epsilon [0.50,0.57] $$
 
 # COMMAND ----------
 
