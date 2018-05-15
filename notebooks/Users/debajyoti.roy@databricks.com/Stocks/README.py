@@ -3,7 +3,7 @@
 # MAGIC # Daily News for Stock Market Prediction
 # MAGIC Using 8 years' daily news headlines to predict stock market movement.
 # MAGIC 
-# MAGIC ![](https://s3.us-east-2.amazonaws.com/databricks-roy/Stocks.jpg)
+# MAGIC ![](https://s3.us-east-2.amazonaws.com/databricks-roy/High+Level.jpg)
 
 # COMMAND ----------
 
