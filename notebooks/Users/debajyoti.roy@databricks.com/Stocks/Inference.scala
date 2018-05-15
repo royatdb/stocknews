@@ -36,24 +36,18 @@ val newsSchema = newsDF.schema
 val newsJsonPath = "/mnt/roy/redditnews"
 dbutils.fs.rm(newsJsonPath, true)
 
-newsDF.coalesce(48).write.json(newsJsonPath)
+newsDF.coalesce(64).write.json(newsJsonPath)
 
 // COMMAND ----------
 
 val newsStream = spark.readStream.option("maxFilesPerTrigger",1).schema(newsSchema).json(newsJsonPath)
 
-newsStream.writeStream
-  .format("memory")
-  .queryName("news_stream")
-  .start()
+display(newsStream)
 
 // COMMAND ----------
 
-// MAGIC %sql SELECT * from news_stream
+val predictedStream = model.transform(newsStream)
 
-// COMMAND ----------
-
-val predictedStream = model.transform(spark.read.table("news_stream"))
 display(predictedStream)
 
 // COMMAND ----------
