@@ -46,6 +46,9 @@ print(dtc.explainParams())
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC %md 
+# MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) 3-fold Cross Validation
+# MAGIC 
 # MAGIC ![crossValidation](http://curriculum-release.s3-website-us-west-2.amazonaws.com/images/301/CrossValidation.png)
 
 # COMMAND ----------
@@ -70,6 +73,11 @@ display(result)
 # COMMAND ----------
 
 print "AUC %(result)s" % {"result": evaluator.evaluate(result)}
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Model Deployment
 
 # COMMAND ----------
 
