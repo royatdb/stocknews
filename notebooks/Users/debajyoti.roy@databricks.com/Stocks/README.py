@@ -9,10 +9,10 @@
 
 # MAGIC %md
 # MAGIC # We will go over how, UAP is leveraged for:
-# MAGIC * Data Engineering tasks for Data Ingestion
-# MAGIC * Time Series manipulation and Data Exloration
-# MAGIC * NLP based ML Model Training and Cross Validation
-# MAGIC * Infer on Streaming Data using Deployed Model
+# MAGIC * Data Engineering tasks e.g. Data Ingestion
+# MAGIC * Time Series manipulation and Data Exploration
+# MAGIC * NLP based ML Model Training, Validation and Tuning
+# MAGIC * Infererence on Streaming Data using Deployed Model
 
 # COMMAND ----------
 
