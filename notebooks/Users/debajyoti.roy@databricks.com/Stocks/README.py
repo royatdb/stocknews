@@ -8,7 +8,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # Demonstrate: how UAP is leveraged for:
+# MAGIC # Agenda:
 # MAGIC * Data Engineering tasks e.g. Data Ingestion
 # MAGIC * Time Series manipulation and Data Exploration
 # MAGIC * NLP based ML Model Training, Validation and Tuning
