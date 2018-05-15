@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # Daily News to Predict Stock Market Movement.
+# MAGIC # Daily News to Predict Stock Market Movement
 # MAGIC Using 8 years' daily news headlines to predict stock market movement.
 # MAGIC 
 # MAGIC ![](https://s3.us-east-2.amazonaws.com/databricks-roy/High+Level.jpg)
@@ -14,7 +14,7 @@
 # MAGIC 
 # MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Time Series manipulation and Data Exploration
 # MAGIC 
-# MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) NLP pipeline and ML Model Training, Validation and Tuning
+# MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) NLP pipeline, Model Training, Validation and Tuning
 # MAGIC 
 # MAGIC ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Inference on Streaming Data using Deployed Model
 
