@@ -8,6 +8,15 @@
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC # We will go over how, UAP is leveraged for:
+# MAGIC * Data Engineering tasks for Data Ingestion
+# MAGIC * Time Series manipulation and Data Exloration
+# MAGIC * NLP based ML Model Training and Cross Validation
+# MAGIC * Infer on Streaming Data using Deployed Model
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC # Logical flow of this Demo:
 # MAGIC ![](https://s3.us-east-2.amazonaws.com/databricks-roy/Data+Flow.jpg)
 
@@ -15,6 +24,3 @@
 
 # MAGIC %md 
 # MAGIC #<div style="float:right"><a href="$./Ingest">Ingest</a> <b style="font-size: 160%; color: #1CA0C2;">&#8680;</b></div></div>
-
-# COMMAND ----------
-
