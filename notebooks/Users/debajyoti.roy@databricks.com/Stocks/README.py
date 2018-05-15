@@ -12,7 +12,7 @@
 # MAGIC * Data Engineering tasks e.g. Data Ingestion
 # MAGIC * Time Series manipulation and Data Exploration
 # MAGIC * NLP based ML Model Training, Validation and Tuning
-# MAGIC * Infererence on Streaming Data using Deployed Model
+# MAGIC * Inference on Streaming Data using Deployed Model
 
 # COMMAND ----------
 
