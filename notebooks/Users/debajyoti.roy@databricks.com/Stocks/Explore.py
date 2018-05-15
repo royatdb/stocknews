@@ -67,7 +67,7 @@ news.printSchema()
 
 data = stocks_w_label.\
   join(news, "Date").\
-  select("Date", "label", lower(col("News")).alias("News")).\
+  select("Date", "label", "News").\
   orderBy(asc("Date"))
   
 display(data)
@@ -99,12 +99,12 @@ data.write.mode("overwrite").saveAsTable("news_djia")
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%pirate%' GROUP BY label
+# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%sanctions%' GROUP BY label
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%president%' GROUP BY label
+# MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%olympics%' GROUP BY label
 
 # COMMAND ----------
 
