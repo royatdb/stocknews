@@ -14,6 +14,11 @@
 
 # COMMAND ----------
 
+# MAGIC %md 
+# MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Data Ingest
+
+# COMMAND ----------
+
 dbutils.fs.rm("dbfs:/mnt/roy/kaggle/stocknews",True)
 dbutils.fs.mkdirs("dbfs:/mnt/roy/kaggle/stocknews")
 
