@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # Daily News for Stock Market Prediction
+# MAGIC # Daily News to Predict Stock Market Movement.
 # MAGIC Using 8 years' daily news headlines to predict stock market movement.
 # MAGIC 
 # MAGIC ![](https://s3.us-east-2.amazonaws.com/databricks-roy/High+Level.jpg)
