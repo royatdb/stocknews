@@ -8,7 +8,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # We will go over how, UAP is leveraged for:
+# MAGIC # Demonstrate: how UAP is leveraged for:
 # MAGIC * Data Engineering tasks e.g. Data Ingestion
 # MAGIC * Time Series manipulation and Data Exploration
 # MAGIC * NLP based ML Model Training, Validation and Tuning
@@ -17,7 +17,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # Logical flow of this Demo:
+# MAGIC # Logical flow:
 # MAGIC ![](https://s3.us-east-2.amazonaws.com/databricks-roy/Data+Flow.jpg)
 
 # COMMAND ----------
