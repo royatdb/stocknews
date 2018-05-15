@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-from pyspark.ml.feature import IDF, Tokenizer, RegexTokenizer, StopWordsRemover, CountVectorizer, NGram, VectorAssembler
+from pyspark.ml.feature import RegexTokenizer, StopWordsRemover, CountVectorizer
 from pyspark.ml import Pipeline
 from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
@@ -23,29 +23,11 @@ test = splits[1].cache()
 
 # COMMAND ----------
 
-tokenizer = [RegexTokenizer().setInputCol("News").setOutputCol("tokens").setPattern("\\W+")]
+tokenizer = RegexTokenizer().setInputCol("News").setOutputCol("tokens").setPattern("\\W+")
 
-remover = [StopWordsRemover().setInputCol("tokens").setOutputCol("stopWordFree")]
-  
-n=2
+remover = StopWordsRemover().setInputCol("tokens").setOutputCol("stopWordFree")
 
-ngrams = [
-    NGram(n=i, inputCol="stopWordFree", outputCol="{0}_grams".format(i))
-    for i in range(1, n + 1)
-]
-
-cv = [
-    CountVectorizer(vocabSize=1000,inputCol="{0}_grams".format(i),
-        outputCol="{0}_tf".format(i))
-    for i in range(1, n + 1)
-]
-
-idf = [IDF(inputCol="{0}_tf".format(i), outputCol="{0}_tfidf".format(i), minDocFreq=5) for i in range(1, n + 1)]
-
-assembler = [VectorAssembler(
-    inputCols=["{0}_tfidf".format(i) for i in range(1, n + 1)],
-    outputCol="features"
-)]
+counts = CountVectorizer().setInputCol("stopWordFree").setOutputCol("features").setVocabSize(1000)
 
 # COMMAND ----------
 
@@ -55,7 +37,7 @@ evaluator.getMetricName()
 # COMMAND ----------
 
 dtc = DecisionTreeClassifier()
-dtp = Pipeline(stages = tokenizer+remover+ngrams+cv+idf+assembler+[dtc] )
+dtp = Pipeline().setStages([tokenizer, remover, counts, dtc])
 
 # COMMAND ----------
 
@@ -69,8 +51,8 @@ print(dtc.explainParams())
 # COMMAND ----------
 
 paramGrid = ParamGridBuilder().\
-    addGrid(dtc.maxBins, [32, 64]).\
-    addGrid(dtc.maxDepth, [5, 30]).\
+    addGrid(dtc.maxBins, [64, 128]).\
+    addGrid(dtc.maxDepth, [20, 30]).\
     build()
     
 crossval = CrossValidator(estimator=dtp,
