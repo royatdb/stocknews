@@ -72,6 +72,11 @@ display(result)
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC # [Kaggle](https://www.kaggle.com/aaron7sun/stocknews/kernels) submissions have `AUC` = 0.5 - 0.55
+
+# COMMAND ----------
+
 print "AUC %(result)s" % {"result": evaluator.evaluate(result)}
 
 # COMMAND ----------
