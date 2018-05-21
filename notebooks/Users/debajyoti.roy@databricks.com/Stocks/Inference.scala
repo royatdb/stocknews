@@ -57,8 +57,23 @@ display(predictedStream)
 
 // COMMAND ----------
 
+// MAGIC %md 
+// MAGIC #### ![Spark Logo Tiny](https://s3-us-west-2.amazonaws.com/curriculum-release/images/105/logo_spark_tiny.png) Backtesting
+// MAGIC Strategy: If model predicts 1 then, `buy` at start of the day and `sell` at close
+
+// COMMAND ----------
+
+val actuals = spark.read.table("news_djia")
+
 display(
-  predictedStream.groupBy("prediction").count()
+  predictedStream
+    .join(actuals, "Date")
+    .withColumn("year", year($"Date"))
+    .select("year", "close_movement", "prediction")
+    .filter("prediction = 1")
+    .groupBy("year")
+    .agg(sum("close_movement"))
+    .orderBy("year")
 )
 
 // COMMAND ----------
