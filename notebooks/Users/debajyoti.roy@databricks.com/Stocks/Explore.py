@@ -39,10 +39,13 @@ window_spec = Window.partitionBy("source").orderBy(asc("Date")).rowsBetween((-1)
 
 get_label = udf(lambda closes: 1 if closes[1]>closes[0] else 0, IntegerType())
 
+get_close_movement = udf(lambda closes: closes[1] - closes[0], DoubleType())
+
 stocks_w_label = stocks.\
   withColumn("window_values", collect_list(col("Close")).over(window_spec)).\
   filter(size(col("window_values")) == 2).\
   withColumn("label", get_label(col("window_values"))).\
+  withColumn("close_movement", get_close_movement(col("window_values"))).\
   orderBy(asc("source"), asc("date"))
 
 display(stocks_w_label)
@@ -72,7 +75,7 @@ news.printSchema()
 
 data = stocks_w_label.\
   join(news, "Date").\
-  select("Date", "label", "News").\
+  select("Date", "label", "close_movement", "News").\
   orderBy(asc("Date"))
   
 display(data)
@@ -120,6 +123,11 @@ data.write.mode("overwrite").saveAsTable("news_djia")
 
 # MAGIC %sql
 # MAGIC SELECT label, count(News) FROM news_djia WHERE News LIKE '%olympics%' GROUP BY label
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT close_movement FROM news_djia
 
 # COMMAND ----------
 
