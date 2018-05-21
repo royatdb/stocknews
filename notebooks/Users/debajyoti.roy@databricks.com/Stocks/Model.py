@@ -17,7 +17,7 @@ data = spark.read.table("news_djia")
 
 # COMMAND ----------
 
-splits = data.randomSplit([0.85, 0.15], 42)
+splits = data.randomSplit([0.90, 0.10], 42)
 train = splits[0].cache()
 test = splits[1].cache()
 
@@ -61,7 +61,8 @@ paramGrid = ParamGridBuilder().\
 crossval = CrossValidator(estimator=dtp,
                           estimatorParamMaps=paramGrid,
                           evaluator=evaluator,
-                          numFolds=3)
+                          numFolds=3, 
+                          parallelism=2)
 
 cvModel = crossval.fit(train)
 
